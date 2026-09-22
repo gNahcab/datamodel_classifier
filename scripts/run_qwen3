@@ -1,0 +1,6 @@
+llama-server \
+  -hf unsloth/Qwen3-4B-Instruct-2507-GGUF:UD-Q4_K_XL \
+  --host 127.0.0.1 \
+  --port 8081 \
+  -ngl 99 \
+  -c 4096
