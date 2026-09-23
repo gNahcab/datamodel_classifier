@@ -1,7 +1,7 @@
 mod reference_ontologies;
 mod classify;
 mod prompt_semantics;
-mod datamodel;
+mod dasch_project;
 
 fn main() {
     // load datamodel

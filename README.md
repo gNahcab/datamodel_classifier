@@ -26,7 +26,7 @@ keywords, description: give context of the datamodel
  
 ### In detail
     
-    // load datamodel
+    // load parts of the datamodel (later, when annotating process is finished, we'll just insert the new annotations in the existing datamodel instead of rebuilding the whole datamodel and risking to loose information)
     // read context(e.g. keywords, description etc) properties, resources
     // build a 2-tuple for properties, with the property and the expected co-domain/range
 
