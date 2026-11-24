@@ -44,7 +44,7 @@ fn example() -> Result<(), Box<dyn std::error::Error>> {
     };
 
     let response: EmbeddingResponse = reqwest::blocking::Client::new()
-        .post("http://127.0.0.1:8080/v1/embeddings")
+        .post("http://127.0.0.1:9931/v1/embeddings")
         .json(&request)
         .send()?
         .error_for_status()?
@@ -76,4 +76,14 @@ fn example() -> Result<(), Box<dyn std::error::Error>> {
     println!("Best match: {}", results[0].0);
 
     Ok(())
+}
+mod test{
+    use crate::classify::classify_nomic::example;
+
+    #[test]
+    fn test_example() {
+        let result = example();
+        println!("{:?}", result);
+        assert!(result.is_ok());
+    }
 }

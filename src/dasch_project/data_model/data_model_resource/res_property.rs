@@ -1,8 +1,11 @@
+use std::collections::HashMap;
+use serde::{Deserialize, Serialize};
 use crate::dasch_project::data_model::data_model_resource::cardinality::Cardinality;
-use crate::dasch_project::data_model::shared::labels::Labels;
 
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(deny_unknown_fields)]
 pub struct ResProperty {
-    name: String,
-    label: Labels,
+    propname: String,
     cardinality: Cardinality,
+    gui_order: usize,
 }

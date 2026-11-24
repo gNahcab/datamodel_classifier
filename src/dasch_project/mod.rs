@@ -1,5 +1,10 @@
-mod dasch_project;
+pub(crate) mod dasch_project;
 mod data_model;
 mod error;
 pub mod builder;
 mod descriptions;
+mod transient_dasch_project;
+pub mod dasch_file;
+mod language_tag;
+mod user;
+mod dasch_list;

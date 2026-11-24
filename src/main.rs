@@ -2,11 +2,25 @@ mod reference_ontologies;
 mod classify;
 mod prompt_semantics;
 mod dasch_project;
+use dasch_project::dasch_project::DaschProject;
+mod cli;
+mod context;
+mod models_wrapper;
+
+use cli::cli::Cli;
+use clap::Parser;
+use serde_json::Value;
+
+use crate::dasch_project::dasch_file::DaschFile;
 
 fn main() {
+    // parse args
+    let args = Cli::parse();
+    // import
+    let content = std::fs::read_to_string(&args.path).expect(format!("could not read file: {:?}", &args.path).as_str());
     // load datamodel
-    
-
+    let mut deserializer = serde_json::Deserializer::from_str(&content);
+    let mut file: DaschFile = serde_path_to_error::deserialize(&mut deserializer).expect("could not parse to DaschFile");
     // read context(e.g. keywords, description etc) properties, resources
     // build a 2-tuple for properties, with the property and the expected co-domain/range
 

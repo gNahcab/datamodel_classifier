@@ -1,8 +1,11 @@
-pub struct GuiAttributes {
-    hlist_name: String
-}
+use serde::{Deserialize, Serialize};
+
+#[derive(Serialize, Deserialize, Debug)]
 pub enum GuiElement {
-    List(GuiAttributes),
+    List,
     Date,
     Searchbox,
+    SimpleText,
+    Textarea,
+    Geolocation,
 }

@@ -1,4 +1,5 @@
 use serde_json::json;
+use crate::models_wrapper::qwen_wrapper::qwen_wrapper;
 
 fn example() -> Result<(), Box<dyn std::error::Error>> {
     let client = reqwest::blocking::Client::new();
@@ -36,20 +37,23 @@ Return only the class identifier.
         "temperature": 0,
         "max_tokens": 20
     });
-
-    let response: serde_json::Value = client
-        .post("http://127.0.0.1:8081/v1/chat/completions")
-        .json(&body)
-        .send()?
-        .error_for_status()?
-        .json()?;
-
+    let response = qwen_wrapper(client, body)?;
     println!(
         "{}",
         response["choices"][0]["message"]["content"]
             .as_str()
             .unwrap_or("No answer")
     );
+    
 
     Ok(())
+}
+mod test{
+    use crate::classify::classify_qwen::example;
+
+    #[test]
+    fn test_example() {
+        let result = example();
+        assert!(result.is_ok());
+    }
 }
